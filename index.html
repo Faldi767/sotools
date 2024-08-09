@@ -1,251 +1,456 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
-  <head><script src="assets/js/color-modes.js"></script>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.122.0">
-    <title>Spec Ops Administrative Tools</title>
-    <link rel="icon" type="image/x-icon" href="assets/brand/sapd.png">
-
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .b-example-divider {
-        width: 100%;
-        height: 3rem;
-        background-color: rgba(0, 0, 0, .1);
-        border: solid rgba(0, 0, 0, .15);
-        border-width: 1px 0;
-        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-      }
-
-      .b-example-vr {
-        flex-shrink: 0;
-        width: 1.5rem;
-        height: 100vh;
-      }
-
-      .bi {
-        vertical-align: -.125em;
-        fill: currentColor;
-      }
-
-      .nav-scroller {
-        position: relative;
-        z-index: 2;
-        height: 2.75rem;
-        overflow-y: hidden;
-      }
-
-      .nav-scroller .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        padding-bottom: 1rem;
-        margin-top: -1px;
-        overflow-x: auto;
-        text-align: center;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .btn-bd-primary {
-        --bd-violet-bg: #712cf9;
-        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
-        --bs-btn-font-weight: 600;
-        --bs-btn-color: var(--bs-white);
-        --bs-btn-bg: var(--bd-violet-bg);
-        --bs-btn-border-color: var(--bd-violet-bg);
-        --bs-btn-hover-color: var(--bs-white);
-        --bs-btn-hover-bg: #6528e0;
-        --bs-btn-hover-border-color: #6528e0;
-        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-        --bs-btn-active-color: var(--bs-btn-hover-color);
-        --bs-btn-active-bg: #5a23c8;
-        --bs-btn-active-border-color: #5a23c8;
-      }
-
-      .bd-mode-toggle {
-        z-index: 1500;
-      }
-
-      .bd-mode-toggle .dropdown-menu .active .bi {
-        display: block !important;
-      }
-    </style>
-
-  </head>
-  <body class="bg-body-tertiary">
-    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-      <symbol id="check2" viewBox="0 0 16 16">
-        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-      </symbol>
-      <symbol id="circle-half" viewBox="0 0 16 16">
-        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-      </symbol>
-      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
-        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
-        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
-      </symbol>
-      <symbol id="sun-fill" viewBox="0 0 16 16">
-        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
-      </symbol>
-    </svg>
-
-    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
-              id="bd-theme"
-              type="button"
-              aria-expanded="false"
-              data-bs-toggle="dropdown"
-              aria-label="Toggle theme (auto)">
-        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
-        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-      </button>
-      <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-        <li>
-          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
-            Light
-            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
-            Dark
-            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-          </button>
-        </li>
-        <li>
-          <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-            <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
-            Auto
-            <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-          </button>
-        </li>
-      </ul>
-    </div>
-
-    
-<div class="container">
-   <div class="row g-5">
-      <div class="py-5 text-center">
-         <img class="d-block mx-auto mb-4" src="assets/brand/sapd.png" alt="" width="72" height="72">
-         <h2>Spec Ops Tools</h2>
-         <p class="lead">Tools for Spec Ops Administration.</p>
-       </div>
-       <form id="frform">
-         <div class="mb-3">
-            <label for="reportnum" class="form-label">Report Number</label>
-            <input type="text" class="form-control" id="reportnum" aria-describedby="emailHelp">
-          </div>
-         <div class="mb-3">
-           <label for="week" class="form-label">Week</label>
-           <input type="text" class="form-control" id="week" aria-describedby="emailHelp">
-         </div>
-         <div class="mb-3">
-            <label for="count" class="form-label">Count</label>
-            <select id="count" class="form-select">
-               <option>1</option>
-               <option>2</option>
-               <option>3</option>
-               <option>4</option>
-               <option>5</option>
-               <option>6</option>
-               <option>7</option>
-              </select>
-          </div>
-         <div class="mb-3">
-           <label for="ns" class="form-label">Notable Situations</label>
-           <input type="text" class="form-control" id="ns" aria-describedby="emailHelp">
-         </div>
-         <div class="mb-3">
-            <label for="forumlink" class="form-label">Forum Link</label>
-            <input type="text" class="form-control" id="forumlink" aria-describedby="emailHelp">
-          </div>
-          <button type="button" class="btn btn-sm btn-info">Apply</button>
-       </form>
-   </div>
-   <br>
-    <div class="row g-5">
-      <div>
-            <div class="input-group mb-3">
-              <span class="input-group-text">BBCode:</span>
-              <input type="text" id="bbcode" class="form-control" aria-label="Amount (to the nearest dollar)" value="" disabled>
-              <span class="input-group-text"><button type="button" id="copybbcode" class="btn btn-sm btn-info">Copy</button></span>
+    <head>
+        <script src="assets/js/color-modes.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+        <meta name="generator" content="Hugo 0.122.0">
+        <title>Spec Ops Administrative Tools</title>
+        <link rel="icon" type="image/x-icon" href="assets/brand/sapd.png">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+        <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
+        <style>
+            .bd-placeholder-img {
+              font-size: 1.125rem;
+              text-anchor: middle;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              user-select: none;
+            }
+      
+            @media (min-width: 768px) {
+              .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+              }
+            }
+      
+            .b-example-divider {
+              width: 100%;
+              height: 3rem;
+              background-color: rgba(0, 0, 0, .1);
+              border: solid rgba(0, 0, 0, .15);
+              border-width: 1px 0;
+              box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+            }
+      
+            .b-example-vr {
+              flex-shrink: 0;
+              width: 1.5rem;
+              height: 100vh;
+            }
+      
+            .bi {
+              vertical-align: -.125em;
+              fill: currentColor;
+            }
+      
+            .nav-scroller {
+              position: relative;
+              z-index: 2;
+              height: 2.75rem;
+              overflow-y: hidden;
+            }
+      
+            .nav-scroller .nav {
+              display: flex;
+              flex-wrap: nowrap;
+              padding-bottom: 1rem;
+              margin-top: -1px;
+              overflow-x: auto;
+              text-align: center;
+              white-space: nowrap;
+              -webkit-overflow-scrolling: touch;
+            }
+      
+            .btn-bd-primary {
+              --bd-violet-bg: #712cf9;
+              --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+      
+              --bs-btn-font-weight: 600;
+              --bs-btn-color: var(--bs-white);
+              --bs-btn-bg: var(--bd-violet-bg);
+              --bs-btn-border-color: var(--bd-violet-bg);
+              --bs-btn-hover-color: var(--bs-white);
+              --bs-btn-hover-bg: #6528e0;
+              --bs-btn-hover-border-color: #6528e0;
+              --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+              --bs-btn-active-color: var(--bs-btn-hover-color);
+              --bs-btn-active-bg: #5a23c8;
+              --bs-btn-active-border-color: #5a23c8;
+            }
+      
+            .bd-mode-toggle {
+              z-index: 1500;
+            }
+      
+            .bd-mode-toggle .dropdown-menu .active .bi {
+              display: block !important;
+            }
+        </style>
+    </head>
+    <body class="bg-body-tertiary">
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+            <symbol id="check2" viewBox="0 0 16 16">
+                <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+            </symbol>
+            <symbol id="circle-half" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+            </symbol>
+            <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+                <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+                <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+            </symbol>
+            <symbol id="sun-fill" viewBox="0 0 16 16">
+                <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+            </symbol>
+        </svg>
+        <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+            <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+                id="bd-theme"
+                type="button"
+                aria-expanded="false"
+                data-bs-toggle="dropdown"
+                aria-label="Toggle theme (auto)">
+                <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
+                <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+                <li>
+                    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+                        <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
+                        Light
+                        <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+                        <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
+                        Dark
+                        <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                    </button>
+                </li>
+                <li>
+                    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
+                        <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#circle-half"></use></svg>
+                        Auto
+                        <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="container">
+            <div class="row g-5">
+                <div class="py-5 text-center">
+                    <img class="d-block mx-auto mb-4" src="assets/brand/sapd.png" alt="" width="72" height="72">
+                    <h2>Spec Ops Tools</h2>
+                    <p class="lead">Tools for Spec Ops Administration.</p>
+                </div>
+                <div class="accordion" id="accordionasd">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingasd">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#asd" aria-expanded="true" aria-controls="collapseOne">
+                                Air Support Division
+                            </button>
+                        </h2>
+                        <div id="asd" class="accordion-collapse collapse" aria-labelledby="asd" data-bs-parent="#accordionasd">
+                            <div class="accordion-body">
+                                <div class="accordion" id="accordionasdc">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingfr">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#fr" aria-expanded="true" aria-controls="collapseOne">
+                                                Flight Report
+                                            </button>
+                                        </h2>
+                                        <div id="fr" class="accordion-collapse collapse" aria-labelledby="fr" data-bs-parent="#accordionasdc">
+                                            <div class="accordion-body">
+                                                <form id="frform">
+                                                    <div class="mb-3">
+                                                        <label for="reportnum" class="form-label">Report Number</label>
+                                                        <input type="text" class="form-control" id="reportnum">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="week" class="form-label">Week</label>
+                                                        <input type="text" class="form-control" id="week">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="count" class="form-label">Count</label>
+                                                        <select id="count" class="form-select">
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                            <option>4</option>
+                                                            <option>5</option>
+                                                            <option>6</option>
+                                                            <option>7</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="ns" class="form-label">Notable Situations</label>
+                                                        <input type="text" class="form-control" id="ns">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="forumlink" class="form-label">Forum Link</label>
+                                                        <input type="text" class="form-control" id="forumlink">
+                                                    </div>
+                                                    <button type="button" class="btn btn-sm btn-info" id="frapply">Apply</button>
+                                                </form>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">BBCode:</span>
+                                                        <input type="text" id="bbcode" class="form-control" value="" disabled>
+                                                        <span class="input-group-text"><button type="button" id="copybbcode" class="btn btn-sm btn-success">Copy</button></span>
+                                                    </div>
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">Reply:</span>
+                                                        <input type="text" id="reply" class="form-control" value="" disabled>
+                                                        <span class="input-group-text"><button type="button" id="copyreply" class="btn btn-sm btn-success">Copy</button></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion" id="accordionasdopa">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="headingasdopa">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#asdopa" aria-expanded="true" aria-controls="collapseTwo">
+                                                    Officer Performance Assessment
+                                                </button>
+                                            </h2>
+                                            <div id="asdopa" class="accordion-collapse collapse" aria-labelledby="asdopa" data-bs-parent="#accordionasdopa">
+                                                <div class="accordion-body">
+                                                    <div class="accordion" id="accordionasdduty">
+                                                        <div class="accordion-item">
+                                                            <h2 class="accordion-header" id="headingasddutyscorecalc">
+                                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#asdduty" aria-expanded="true" aria-controls="collapseOne">
+                                                                    Duty Time Score
+                                                                </button>
+                                                            </h2>
+                                                            <div id="asdduty" class="accordion-collapse collapse" aria-labelledby="asdduty" data-bs-parent="asdopacalc">
+                                                                <div class="accordion-body">
+                                                                    <div class="accordion" id="accordionasddutyscorecalc">
+                                                                        <form id="dutytimecalcform">
+                                                                            <div class="mb-3">
+                                                                                <label for="reportnum" class="form-label">Week 1</label>
+                                                                                <input type="text" class="form-control" id="duty1">
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label for="reportnum" class="form-label">Week 2</label>
+                                                                                <input type="text" class="form-control" id="duty2">
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label for="reportnum" class="form-label">Week 3</label>
+                                                                                <input type="text" class="form-control" id="duty3">
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label for="reportnum" class="form-label">Week 4</label>
+                                                                                <input type="text" class="form-control" id="duty4">
+                                                                            </div>
+                                                                            <button type="button" class="btn btn-sm btn-info" id="dutytimeapply">Apply</button>
+                                                                        </form>
+                                                                        <br>
+                                                                        <div class="row g-5">
+                                                                            <div class="input-group mb-3">
+                                                                                <span class="input-group-text">Score:</span>
+                                                                                <input type="text" id="dutyscore" class="form-control" value="" disabled>
+                                                                                <span class="input-group-text"><button type="button" id="copydutyscore" class="btn btn-sm btn-success">Copy</button></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion" id="accordionasdfropa">
+                                                        <div class="accordion-item">
+                                                            <h2 class="accordion-header" id="headingasdfropacalc">
+                                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#asdfrscore" aria-expanded="true" aria-controls="collapseTwo">
+                                                                    Flight Report Score
+                                                                </button>
+                                                            </h2>
+                                                            <div id="asdfrscore" class="accordion-collapse collapse" aria-labelledby="asdfrscore" data-bs-parent="asdopacalc">
+                                                                <div class="accordion-body">
+                                                                    <div class="accordion" id="accordionasdfrscorecalc">
+                                                                        <form id="frscoreform">
+                                                                            <div class="mb-3">
+                                                                                <label for="frtotal" class="form-label">Total Flight Report</label>
+                                                                                <input type="text" class="form-control" id="frtotal">
+                                                                            </div>
+                                                                            <button type="button" class="btn btn-sm btn-info" id="frscoreapply">Apply</button>
+                                                                        </form>
+                                                                        <br>
+                                                                        <div class="row g-5">
+                                                                            <div class="input-group mb-3">
+                                                                                <span class="input-group-text">Score:</span>
+                                                                                <input type="text" id="frscore" class="form-control" value="" disabled>
+                                                                                <span class="input-group-text"><button type="button" id="copyfrscore" class="btn btn-sm btn-success">Copy</button></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accordion" id="accordionasdtotalopa">
+                                                        <div class="accordion-item">
+                                                            <h2 class="accordion-header" id="headingasdfropacalc">
+                                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#asdtotalscore" aria-expanded="true" aria-controls="collapseTwo">
+                                                                    Total Score
+                                                                </button>
+                                                            </h2>
+                                                            <div id="asdtotalscore" class="accordion-collapse collapse" aria-labelledby="asdtotalscore" data-bs-parent="asdopacalc">
+                                                                <div class="accordion-body">
+                                                                    <div class="accordion" id="accordionasdtotalscorecalc">
+                                                                        <form id="totalscoreform">
+                                                                            <div class="mb-3">
+                                                                                <label for="dutyscore2" class="form-label">Duty Score</label>
+                                                                                <input type="text" class="form-control" id="dutyscore2">
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label for="frscore2" class="form-label">Flight Report Score</label>
+                                                                                <input type="text" class="form-control" id="frscore2">
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label for="trainingscore" class="form-label">Training Score</label>
+                                                                                <input type="text" class="form-control" id="trainingscore">
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label for="perfscore" class="form-label">AIR Performance Score</label>
+                                                                                <input type="text" class="form-control" id="perfscore">
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <label for="spvscore" class="form-label">Supervisor Score</label>
+                                                                                <input type="text" class="form-control" id="spvscore">
+                                                                            </div>
+                                                                            <button type="button" class="btn btn-sm btn-info" id="totalscoreapply">Apply</button>
+                                                                        </form>
+                                                                        <br>
+                                                                        <div class="row g-5">
+                                                                            <div class="input-group mb-3">
+                                                                                <span class="input-group-text">Score:</span>
+                                                                                <input type="text" id="totalscore" class="form-control" value="" disabled>
+                                                                                <span class="input-group-text"><button type="button" id="copytotalscore" class="btn btn-sm btn-success">Copy</button></span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="input-group mb-3">
-               <span class="input-group-text">Reply:</span>
-               <input type="text" id="reply" class="form-control" aria-label="Amount (to the nearest dollar)" value="" disabled>
-               <span class="input-group-text"><button type="button" id="copyreply" class="btn btn-sm btn-info">Copy</button></span>
-             </div>
-          </div>
-      </div>
-    </div>
-
-  <footer class="my-5 pt-5 text-body-secondary text-center text-small">
-    <p class="mb-1">&copy; Developed by Faldi767</p>
-  </footer>
-</div>
-<script>
-  $(document).ready(function() {
-         $('#frform').on('click', '.btn-info', function(){
-          var reportnum = $('#reportnum').val();
-          var week = $('#week').val();
-          var ns = $('#ns').val();
-          var count = $('#count').val();
-          var forumlink = $('#forumlink').val();
-          var bbcodetext = '[cell][url=' + forumlink + ']' + reportnum + '[/url][/cell]';
-          var replytext = 'Valid, ' + week + '-' + count + ', NS:' + ns;
-          $('#bbcode').val(bbcodetext);
-          $('#reply').val(replytext);
-        });
-        $('#copybbcode').off('click').on('click', function(){
-            var copybbcode = $('#bbcode').val();
-            var textarea = document.createElement('textarea');
-            textarea.value = copybbcode;
-            textarea.style.position = 'fixed';
-            document.body.appendChild(textarea);
-            textarea.select(); // Select the text inside the textarea
-            document.execCommand('copy'); // Copy text to clipboard
-            document.body.removeChild(textarea);
-        });
-        $('#copyreply').off('click').on('click', function(){
-            var copyreply = $('#reply').val();
-            var textarea = document.createElement('textarea');
-            textarea.value = copyreply;
-            textarea.style.position = 'fixed';
-            document.body.appendChild(textarea);
-            textarea.select(); // Select the text inside the textarea
-            document.execCommand('copy'); // Copy text to clipboard
-            document.body.removeChild(textarea);
-        });
-        
-  });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        </div>
+        <footer class="my-5 pt-5 text-body-secondary text-center text-small">
+            <p class="mb-1">&copy; Developed by Faldi767</p>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script>
+            $(document).ready(function() {
+                $('#frapply').off('click').on('click', function(){
+                    var reportnum = $('#reportnum').val();
+                    var week = $('#week').val();
+                    var ns = $('#ns').val();
+                    var count = $('#count').val();
+                    var forumlink = $('#forumlink').val();
+                    var bbcodetext = '[cell][url=' + forumlink + ']' + reportnum + '[/url][/cell]';
+                    var replytext = 'Valid, ' + week + '-' + count + ', NS:' + ns;
+                    $('#bbcode').val(bbcodetext);
+                    $('#reply').val(replytext);
+                });
+                $('#copybbcode').off('click').on('click', function(){
+                    var copybbcode = $('#bbcode').val();
+                    var textarea = document.createElement('textarea');
+                    textarea.value = copybbcode;
+                    textarea.style.position = 'fixed';
+                    document.body.appendChild(textarea);
+                    textarea.select(); // Select the text inside the textarea
+                    document.execCommand('copy'); // Copy text to clipboard
+                    document.body.removeChild(textarea);
+                });
+                $('#copyreply').off('click').on('click', function(){
+                    var copyreply = $('#reply').val();
+                    var textarea = document.createElement('textarea');
+                    textarea.value = copyreply;
+                    textarea.style.position = 'fixed';
+                    document.body.appendChild(textarea);
+                    textarea.select(); // Select the text inside the textarea
+                    document.execCommand('copy'); // Copy text to clipboard
+                    document.body.removeChild(textarea);
+                }); 
+                $('#dutytimecalcform').on('click', '.btn-info', function(){
+                    var dutyscore = 1.0;
+                    var duty1 = $('#duty1').val();
+                    var duty2 = $('#duty2').val();
+                    var duty3 = $('#duty3').val();
+                    var duty4 = $('#duty4').val();
+                    duty1 = (duty1 < 301 ? 1.0 : (duty1 < 401 ? 2.0 : (duty1 < 701 ? 3.0 : (duty1 < 901 ? 4.0 : 5.0))));
+                    duty2 = (duty2 < 301 ? 1.0 : (duty2 < 401 ? 2.0 : (duty2 < 701 ? 3.0 : (duty2 < 901 ? 4.0 : 5.0))));
+                    duty3 = (duty3 < 301 ? 1.0 : (duty3 < 401 ? 2.0 : (duty3 < 701 ? 3.0 : (duty3 < 901 ? 4.0 : 5.0))));
+                    duty4 = (duty4 < 301 ? 1.0 : (duty4 < 401 ? 2.0 : (duty4 < 701 ? 3.0 : (duty4 < 901 ? 4.0 : 5.0))));
+                    dutyscore = (duty1 + duty2 + duty3 + duty4) / 4;
+                    $('#dutyscore').val(dutyscore.toFixed(2));
+                    $('#dutyscore2').val(dutyscore.toFixed(2));
+                });   
+                $('#copydutyscore').off('click').on('click', function(){
+                    var copydutyscore = $('#dutyscore').val();
+                    var textarea = document.createElement('textarea');
+                    textarea.value = copydutyscore;
+                    textarea.style.position = 'fixed';
+                    document.body.appendChild(textarea);
+                    textarea.select(); // Select the text inside the textarea
+                    document.execCommand('copy'); // Copy text to clipboard
+                    document.body.removeChild(textarea);
+                });
+                $('#frscoreform').on('click', '.btn-info', function(){  
+                    var frscore = 1.0;
+                    var fr = $('#frtotal').val();
+                    frscore = (fr < 5 ? 1.0 : (fr < 9 ? 2.0 : (fr < 13 ? 3.0 : (fr < 17 ? 4.0 : 5.0))));
+                    $('#frscore').val(frscore.toFixed(1));
+                    $('#frscore2').val(frscore.toFixed(1));
+                }); 
+                $('#copyfrscore').off('click').on('click', function(){
+                    var copyfrscore = $('#frscore').val();
+                    var textarea = document.createElement('textarea');
+                    textarea.value = copyfrscore;
+                    textarea.style.position = 'fixed';
+                    document.body.appendChild(textarea);
+                    textarea.select(); // Select the text inside the textarea
+                    document.execCommand('copy'); // Copy text to clipboard
+                    document.body.removeChild(textarea);
+                });
+                $('#totalscoreform').on('click', '.btn-info', function(){  
+                    var dutyscore2 = $('#dutyscore2').val();
+                    var frscore2 = $('#frscore2').val();
+                    var trainingscore = $('#trainingscore').val();
+                    var perfscore = $('#perfscore').val();
+                    var spvscore = $('#spvscore').val();
+                    var totalscore = (parseFloat(dutyscore2) + parseFloat(frscore2) + parseFloat(trainingscore) + parseFloat(perfscore) + parseFloat(spvscore)) / 5;
+                    $('#totalscore').val(totalscore.toFixed(2));
+                }); 
+                $('#copytotalscore').off('click').on('click', function(){
+                    var copytotalscore = $('#totalscore').val();
+                    var textarea = document.createElement('textarea');
+                    textarea.value = copytotalscore;
+                    textarea.style.position = 'fixed';
+                    document.body.appendChild(textarea);
+                    textarea.select(); // Select the text inside the textarea
+                    document.execCommand('copy'); // Copy text to clipboard
+                    document.body.removeChild(textarea);
+                });
+            });
+        </script>
+    </body>
 </html>
