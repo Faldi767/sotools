@@ -215,10 +215,36 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingsal">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#sal" aria-expanded="true" aria-controls="collapseTwo">
+                                                Salary
+                                            </button>
+                                        </h2>
+                                        <div id="sal" class="accordion-collapse collapse" aria-labelledby="sal" data-bs-parent="#accordionasdc">
+                                            <div class="accordion-body">
+                                                <form id="salform">
+                                                    <div class="mb-3">
+                                                        <label for="sallink" class="form-label">Image Link</label>
+                                                        <input type="text" class="form-control" id="sallink">
+                                                    </div>
+                                                    <button type="button" class="btn btn-sm btn-info" id="salapply">Apply</button>
+                                                </form>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text">BBCode:</span>
+                                                        <input type="text" id="salbbcode" class="form-control" value="" disabled>
+                                                        <span class="input-group-text"><button type="button" id="copysalbbcode" class="btn btn-sm btn-success">Copy</button></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="accordion" id="accordionasdopa">
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="headingasdopa">
-                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#asdopa" aria-expanded="true" aria-controls="collapseTwo">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#asdopa" aria-expanded="true" aria-controls="collapseThree">
                                                     Officer Performance Assessment
                                                 </button>
                                             </h2>
@@ -444,6 +470,21 @@
                     var copytotalscore = $('#totalscore').val();
                     var textarea = document.createElement('textarea');
                     textarea.value = copytotalscore;
+                    textarea.style.position = 'fixed';
+                    document.body.appendChild(textarea);
+                    textarea.select(); // Select the text inside the textarea
+                    document.execCommand('copy'); // Copy text to clipboard
+                    document.body.removeChild(textarea);
+                });
+                $('#salapply').off('click').on('click', function(){
+                    var sallink = $('#sallink').val();
+                    var bbcodetext = '[cell][center][url=' + sallink + ']PAID[/url][/center][/cell]';
+                    $('#salbbcode').val(bbcodetext);
+                });
+                $('#copysalbbcode').off('click').on('click', function(){
+                    var copysalbbcode = $('#salbbcode').val();
+                    var textarea = document.createElement('textarea');
+                    textarea.value = copysalbbcode;
                     textarea.style.position = 'fixed';
                     document.body.appendChild(textarea);
                     textarea.select(); // Select the text inside the textarea
